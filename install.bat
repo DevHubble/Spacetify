@@ -21,11 +21,11 @@ Add-Type -AssemblyName PresentationFramework
 $git = [System.Windows.MessageBox]::Show('Git esta instalado en tu sistema?', 'Instalacion de Git', 'YesNoCancel');
 
 if ($git -eq 'Yes') {
-Write-Host "`nOmitir la instalacion de Git"
+Write-Host "`nSe omitio la instalacion de Git :/"
 }
 
 if ($git -eq 'No') {
-Write-Host "`nDescargando el instalador de Git"
+Write-Host "`nDescargando el instalador de Git :)"
 Start-Process "https://git-scm.com/download/win"
 Write-Host "Instale Git utilizando el instalador descargado y vuelva aqui una vez hecho esto.`n"
 Read-Host "Si Git esta/ba instalado, presione Enter para continuar"
@@ -33,7 +33,7 @@ RefreshPath
 }
 
 if ($git -eq 'Cancel') {
-Write-Host "`nOperacion cancelada"
+Write-Host "`nOperacion cancelada :/"
 exit
 }
 
@@ -47,11 +47,11 @@ Remove-Item "install.ps1"
 }
 
 if ($bts -eq 'No') {
- Write-Host "`nNo instalar SpotNoAds"
+ Write-Host "`nNo instalar SpotNoAds :("
  exit
 }
 
  if ($spice -eq 'Cancel') {
- Write-Host "`nOperacion cancelada"
+ Write-Host "`nOperacion cancelada :/"
  exit
  }
