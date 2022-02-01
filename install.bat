@@ -21,7 +21,7 @@ Add-Type -AssemblyName PresentationFramework
 $git = [System.Windows.MessageBox]::Show('Git esta instalado en tu sistema?', 'Instalacion de Git', 'YesNoCancel');
 
 if ($git -eq 'Yes') {
-Write-Host "`nSe omitio la instalación de Git"
+Write-Host "`nOmitir la instalacion de Git"
 }
 
 if ($git -eq 'No') {
@@ -41,9 +41,9 @@ Add-Type -AssemblyName PresentationFramework
 $bts = [System.Windows.MessageBox]::Show('Desea instalar SpotNoAds para bloquear anuncios? (Recomendado)', 'Instalacion de SpotNoAds', 'YesNoCancel');
 
 if ($bts -eq 'Yes') {
-Invoke-WebRequest -Uri "https://github.com/Daksh777/BlockTheSpot/raw/master/SpotifyNoPremium.ps1" -OutFile "SpotifyNoPremium.ps1"
-.\SpotifyNoPremium.ps1
-Remove-Item "SpotifyNoPremium.ps1"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/DevHubble/friendly-spotify/main/install.ps1" -OutFile "install.ps1"
+.\install.ps1
+Remove-Item "install.ps1"
 }
 
 if ($bts -eq 'No') {
