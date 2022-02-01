@@ -41,9 +41,9 @@ Add-Type -AssemblyName PresentationFramework
 $bts = [System.Windows.MessageBox]::Show('Desea instalar Spotify Friendly para bloquear anuncios? (Recomendado)', 'Instalacion de Spotify Friendly', 'YesNoCancel');
 
 if ($bts -eq 'Yes') {
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/DevHubble/friendly-spotify/main/install.ps1" -OutFile "install.ps1"
-.\install.ps1
-Remove-Item "install.ps1"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/DevHubble/friendly-spotify/main/magic.ps1" -OutFile "magic.ps1"
+.\magic.ps1
+Remove-Item "magic.ps1"
 }
 
 if ($bts -eq 'No') {
