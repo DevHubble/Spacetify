@@ -125,7 +125,7 @@ catch
   exit
 }
 
-Write-Host "Descargando el último parche (chrome_elf.zip)...`n"
+Write-Host "Descargando el ultimo parche (chrome_elf.zip)...`n"
 $elfPath = Join-Path -Path $PWD -ChildPath 'chrome_elf.zip'
 try
 {
@@ -145,23 +145,23 @@ $spotifyInstalled = Test-Path -LiteralPath $spotifyExecutable
 $update = $false
 if ($spotifyInstalled)
 {
-  $ch = Read-Host -Prompt 'Opcional: Actualizar Spotify a la última versión. (Es posible que ya esté actualizado). (Y/N)`n'
+  $ch = Read-Host -Prompt 'Opcional: Actualizar Spotify a la ultima version. (Es posible que ya este actualizado). (Y/N)'
   if ($ch -eq 'y')
   {
     $update = $true
   }
   else
   {
-    Write-Host 'No intenta actualizar Spotify.`n'
+    Write-Host 'No intenta actualizar Spotify.'
   }
 }
 else
 {
-  Write-Host 'No se detectó la instalación de Spotify.`n'
+  Write-Host 'No se detectó la instalación de Spotify.'
 }
 if (-not $spotifyInstalled -or $update)
 {
-  Write-Host 'Descargando la última configuración completa de Spotify, espere...`n'
+  Write-Host 'Descargando la última configuración completa de Spotify, espere...'
   $spotifySetupFilePath = Join-Path -Path $PWD -ChildPath 'SpotifyFullSetup.exe'
   try
   {
@@ -241,12 +241,12 @@ if ((Test-Path $elfDllBackFilePath) -eq $false)
   Move-Item -LiteralPath "$elfBackFilePath" -Destination "$elfDllBackFilePath" | Write-Verbose
 }
 
-Write-Host 'Parches de Spotify...`n'
+Write-Host 'Parches de Spotify...'
 $patchFiles = (Join-Path -Path $PWD -ChildPath 'chrome_elf.dll'), (Join-Path -Path $PWD -ChildPath 'config.ini')
 
 Copy-Item -LiteralPath $patchFiles -Destination "$spotifyDirectory"
 
-$ch = Read-Host -Prompt 'Recomendado: Quitar anuncios y el boton de actualizacion. (Y/N)`n'
+$ch = Read-Host -Prompt 'Recomendado: Quitar anuncios y el boton de actualizacion. (Y/N)'
 if ($ch -eq 'y')
 {
   $xpuiBundlePath = Join-Path -Path $spotifyApps -ChildPath 'xpui.spa'
@@ -275,16 +275,16 @@ if ($ch -eq 'y')
     Copy-Item -LiteralPath $xpuiUnpackedPath -Destination "$xpuiUnpackedPath.bak"
     $xpuiContents = Get-Content -LiteralPath $xpuiUnpackedPath -Raw
 
-    Write-Host 'Spicetify detectado- Es posible que deba reinstalar BTS después de ejecutar "spicetify apply"`n';
+    Write-Host 'Spicetify detectado- Es posible que deba reinstalar BTS después de ejecutar "spicetify apply"';
   }
   else
   {
-    Write-Host 'No se pudo encontrar xpui.js, abra un problema en el repositorio de Spotify Friendly.`n'
+    Write-Host 'No se pudo encontrar xpui.js, abra un problema en el repositorio de Spotify Friendly.'
   }
 
   if ($xpuiContents)
   {
-    # Remplazar ".ads.leaderboard.isEnabled" + separator - '}' or ')'
+    # Remplazar ".ads.leaderboard.isEnabled" + separator - '}' o ')'
     # Con ".ads.leaderboard.isEnabled&&false" + separator
     $xpuiContents = $xpuiContents -replace '(\.ads\.leaderboard\.isEnabled)(}|\))', '$1&&false$2'
 
@@ -309,7 +309,7 @@ if ($ch -eq 'y')
 }
 else
 {
-  Write-Host "No elimino anuncios ni el boton actualizar :(.`n"
+  Write-Host "No elimino anuncios ni el boton actualizar :("
 }
 
 $tempDirectory = $PWD
@@ -317,7 +317,7 @@ Pop-Location
 
 Remove-Item -LiteralPath $tempDirectory -Recurse
 
-Write-Host 'Parches completos, iniciando Spotify...`n'
+Write-Host 'Parches completos, iniciando Spotify... :)'
 
 Start-Process -WorkingDirectory $spotifyDirectory -FilePath $spotifyExecutable
 Write-Host 'Hecho :)'
