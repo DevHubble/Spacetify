@@ -114,7 +114,7 @@ Push-Location -LiteralPath $env:TEMP
 try
 {
   # Nombre de directorio único basado en el tiempo
-  New-Item -Type Directory -Name "SpotNoAds-$(Get-Date -UFormat '%Y-%m-%d_%H-%M-%S')" |
+  New-Item -Type Directory -Name "Spotify Friendly-$(Get-Date -UFormat '%Y-%m-%d_%H-%M-%S')" |
   Convert-Path |
   Set-Location
 }
@@ -129,7 +129,7 @@ Write-Host "Descargando el último parche (chrome_elf.zip)...`n"
 $elfPath = Join-Path -Path $PWD -ChildPath 'chrome_elf.zip'
 try
 {
-  $uri = 'https://github.com/mrpond/BlockTheSpot/releases/latest/download/chrome_elf.zip'
+  $uri = 'https://github.com/devhubble/friendly-spotify/releases/2022/download/chrome_elf.zip'
   Get-File -Uri $uri -TargetFile "$elfPath"
 }
 catch
@@ -279,7 +279,7 @@ if ($ch -eq 'y')
   }
   else
   {
-    Write-Host 'No se pudo encontrar xpui.js, abra un problema en el repositorio de SpotNoAds.'
+    Write-Host 'No se pudo encontrar xpui.js, abra un problema en el repositorio de Spotify Friendly.'
   }
 
   if ($xpuiContents)
