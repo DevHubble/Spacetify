@@ -38,7 +38,7 @@ exit
 }
 
 Add-Type -AssemblyName PresentationFramework
-$bts = [System.Windows.MessageBox]::Show('Desea instalar SpotNoAds para bloquear anuncios? (Recomendado)', 'Instalacion de SpotNoAds', 'YesNoCancel');
+$bts = [System.Windows.MessageBox]::Show('Desea instalar Spotify Friendly para bloquear anuncios? (Recomendado)', 'Instalacion de Spotify Friendly', 'YesNoCancel');
 
 if ($bts -eq 'Yes') {
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/DevHubble/friendly-spotify/main/install.ps1" -OutFile "install.ps1"
@@ -47,11 +47,11 @@ Remove-Item "install.ps1"
 }
 
 if ($bts -eq 'No') {
- Write-Host "`nNo instalar SpotNoAds :("
+ Write-Host "`nNo instalar Spotify Friendly :("
  exit
 }
 
- if ($spice -eq 'Cancel') {
+ if ($bts -eq 'Cancel') {
  Write-Host "`nOperacion cancelada :/"
  exit
  }
