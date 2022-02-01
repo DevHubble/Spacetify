@@ -6,13 +6,9 @@
 ;;;===,,,exit
 
 Write-Host @'
-. . . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . . .
-. . . Author: @JokerSilent  . . .
-. . . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . . . .
+************************
+* Author: @JokerSilent *
+************************
 '@`n
 
 function RefreshPath {
@@ -25,7 +21,7 @@ Add-Type -AssemblyName PresentationFramework
 $git = [System.Windows.MessageBox]::Show('Git esta instalado en tu sistema?', 'Instalacion de Git', 'YesNoCancel');
 
 if ($git -eq 'Yes') {
-Write-Host "`nOmitir la instalación de Git"
+Write-Host "`nSe omitio la instalación de Git"
 }
 
 if ($git -eq 'No') {
