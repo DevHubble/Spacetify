@@ -33,7 +33,7 @@ function Get-File
 
   if ($useBitTransfer)
   {
-    Write-Information -MessageData 'Usar método BitTransfer de reserva ya que está ejecutando Windows PowerShell'
+    Write-Information -MessageData 'Usar metodo BitTransfer de reserva ya que esta ejecutando Windows PowerShell'
     Start-BitsTransfer -Source $Uri -Destination "$($TargetFile.FullName)"
   }
   else
@@ -114,7 +114,7 @@ Push-Location -LiteralPath $env:TEMP
 try
 {
   # Nombre de directorio único basado en el tiempo
-  New-Item -Type Directory -Name "Spotify Friendly-$(Get-Date -UFormat '%Y-%m-%d_%H-%M-%S')`n" |
+  New-Item -Type Directory -Name "Spotify Friendly-$(Get-Date -UFormat '%Y-%m-%d_%H-%M-%S')" |
   Convert-Path |
   Set-Location
 }
