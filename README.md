@@ -14,7 +14,7 @@
 * Desbloquea la función de salto para cualquier pista
 * Ahora es compatible con la nueva versión Alpha (Nueva interfaz de usuario)
 
-:warning: Este mod es para la [**Aplicación de escritorio**](https://www.spotify.com/download/windows/) de Spotify solo en Windows y **no la versión de Microsoft Store**.
+:warning: Este mod es para la [**aplicación de escritorio**](https://www.spotify.com/download/windows/) de Spotify solo en Windows y **no la versión de Microsoft Store**.
 
 ### Instalación/Actualización:
 * Simplemente descargue y ejecute [instalar.bat](https://raw.githack.com/devhubble/friendly-spotify/master/instalar.bat)  
@@ -23,7 +23,7 @@ o
 
 * Ejecutar el siguiente comando en PowerShell:
 ```ps1
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/devhubble/friendly-spotify/master/install.ps1' | Invoke-Expression
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/devhubble/friendly-spotify/master/magic.ps1' | Invoke-Expression
 ```
 
 o
