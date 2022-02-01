@@ -33,7 +33,7 @@ function Get-File
 
   if ($useBitTransfer)
   {
-    Write-Information -MessageData 'Usar un método BitTransfer de reserva ya que está ejecutando Windows PowerShell'
+    Write-Information -MessageData 'Usar un mÃ©todo BitTransfer de reserva ya que estÃ¡ ejecutando Windows PowerShell'
     Start-BitsTransfer -Source $Uri -Destination "$($TargetFile.FullName)"
   }
   else
@@ -63,7 +63,7 @@ function Get-File
       Write-Progress -Activity "Descargando archivo '$downloadedFileName'" -Status "Descargado ($([System.Math]::Floor($downloadedBytes/1024))K of $($totalLength)K): " -PercentComplete ((([System.Math]::Floor($downloadedBytes / 1024)) / $totalLength) * 100)
     }
 
-    Write-Progress -Activity "Finalizó la descarga del archivo '$downloadedFileName'"
+    Write-Progress -Activity "FinalizÃ³ la descarga del archivo '$downloadedFileName'"
 
     $targetStream.Flush()
     $targetStream.Close()
@@ -73,9 +73,11 @@ function Get-File
 }
 
 Write-Host @'
+
 *****************
-Author: @jokersilencioso
+Author: @JokerSilent
 *****************
+
 '@
 
 $spotifyDirectory = Join-Path -Path $env:APPDATA -ChildPath 'Spotify'
@@ -93,9 +95,9 @@ if ($PSVersionTable.PSVersion.Major -ge 7)
 
 if (Get-AppxPackage -Name SpotifyAB.SpotifyMusic)
 {
-  Write-Host "Se ha detectado la versión de Microsoft Store de Spotify que no es compatible.`n"
+  Write-Host "Se ha detectado la versiÃ³n de Microsoft Store de Spotify que no es compatible.`n"
 
-  $ch = Read-Host -Prompt 'Desinstalar la edición de la Tienda Windows de Spotify (Y/N)'
+  $ch = Read-Host -Prompt 'Desinstalar la ediciÃ³n de la Tienda Windows de Spotify (Y/N)'
   if ($ch -eq 'y')
   {
     Write-Host "Desinstalando Spotify.`n"
@@ -111,7 +113,7 @@ if (Get-AppxPackage -Name SpotifyAB.SpotifyMusic)
 Push-Location -LiteralPath $env:TEMP
 try
 {
-  # Nombre de directorio único basado en el tiempo
+  # Nombre de directorio Ãºnico basado en el tiempo
   New-Item -Type Directory -Name "SpotNoAds-$(Get-Date -UFormat '%Y-%m-%d_%H-%M-%S')" |
   Convert-Path |
   Set-Location
@@ -123,7 +125,7 @@ catch
   exit
 }
 
-Write-Host "Descargando el último parche (chrome_elf.zip)...`n"
+Write-Host "Descargando el Ãºltimo parche (chrome_elf.zip)...`n"
 $elfPath = Join-Path -Path $PWD -ChildPath 'chrome_elf.zip'
 try
 {
@@ -143,7 +145,7 @@ $spotifyInstalled = Test-Path -LiteralPath $spotifyExecutable
 $update = $false
 if ($spotifyInstalled)
 {
-  $ch = Read-Host -Prompt 'Opcional: Actualizar Spotify a la última versión. (Es posible que ya esté actualizado). (Y/N)'
+  $ch = Read-Host -Prompt 'Opcional: Actualizar Spotify a la Ãºltima versiÃ³n. (Es posible que ya estÃ© actualizado). (Y/N)'
   if ($ch -eq 'y')
   {
     $update = $true
@@ -155,11 +157,11 @@ if ($spotifyInstalled)
 }
 else
 {
-  Write-Host 'No se detectó la instalación de Spotify.'
+  Write-Host 'No se detectÃ³ la instalaciÃ³n de Spotify.'
 }
 if (-not $spotifyInstalled -or $update)
 {
-  Write-Host 'Descargando la última configuración completa de Spotify, espere...'
+  Write-Host 'Descargando la Ãºltima configuraciÃ³n completa de Spotify, espere...'
   $spotifySetupFilePath = Join-Path -Path $PWD -ChildPath 'SpotifyFullSetup.exe'
   try
   {
@@ -176,18 +178,18 @@ if (-not $spotifyInstalled -or $update)
 
   [System.Security.Principal.WindowsPrincipal] $principal = [System.Security.Principal.WindowsIdentity]::GetCurrent()
   $isUserAdmin = $principal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)
-  Write-Host 'Instalación en ejecución...'
+  Write-Host 'InstalaciÃ³n en ejecuciÃ³n...'
   if ($isUserAdmin)
   {
     Write-Host
-    Write-Host 'Creación de tareas programadas...'
+    Write-Host 'CreaciÃ³n de tareas programadas...'
     $apppath = 'powershell.exe'
     $taskname = 'Spotify install'
     $action = New-ScheduledTaskAction -Execute $apppath -Argument "-NoLogo -NoProfile -Command & `'$spotifySetupFilePath`'"
     $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date)
     $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -WakeToRun
     Register-ScheduledTask -Action $action -Trigger $trigger -TaskName $taskname -Settings $settings -Force | Write-Verbose
-    Write-Host 'La tarea de instalación se ha programado. Inicio de la tarea...'
+    Write-Host 'La tarea de instalaciÃ³n se ha programado. Inicio de la tarea...'
     Start-ScheduledTask -TaskName $taskname
     Start-Sleep -Seconds 2
     Write-Host 'Anular el registro de la tarea...'
@@ -201,12 +203,12 @@ if (-not $spotifyInstalled -or $update)
 
   while ($null -eq (Get-Process -Name Spotify -ErrorAction SilentlyContinue))
   {
-    # Esperar hasta que se complete la instalación
+    # Esperar hasta que se complete la instalaciÃ³n
     Start-Sleep -Milliseconds 100
   }
 
-  # Crear un acceso directo a Spotify en %APPDATA%\Microsoft\Windows\Menú Inicio\Programas y escritorio
-  # (permite que el programa se inicie desde la búsqueda y el escritorio)
+  # Crear un acceso directo a Spotify en %APPDATA%\Microsoft\Windows\MenÃº Inicio\Programas y escritorio
+  # (permite que el programa se inicie desde la bÃºsqueda y el escritorio)
   $wshShell = New-Object -ComObject WScript.Shell
   
   $desktopShortcutPath = "$env:USERPROFILE\Desktop\Spotify.lnk"
@@ -252,7 +254,7 @@ if ($ch -eq 'y')
   $fromZip = $false
 
   # Intente leer xpui.js de xpui.spa para instalaciones normales de Spotify, o
-  # directamente desde Apps/xpui/xpui.js en caso de que Spicetify esté instalado.
+  # directamente desde Apps/xpui/xpui.js en caso de que Spicetify estÃ© instalado.
   if (Test-Path $xpuiBundlePath)
   {
     Add-Type -Assembly 'System.IO.Compression.FileSystem'
@@ -273,7 +275,7 @@ if ($ch -eq 'y')
     Copy-Item -LiteralPath $xpuiUnpackedPath -Destination "$xpuiUnpackedPath.bak"
     $xpuiContents = Get-Content -LiteralPath $xpuiUnpackedPath -Raw
 
-    Write-Host 'Spicetify detectado- Es posible que deba reinstalar BTS después de ejecutar "spicetify apply"';
+    Write-Host 'Spicetify detectado- Es posible que deba reinstalar BTS despuÃ©s de ejecutar "spicetify apply"';
   }
   else
   {
@@ -291,7 +293,7 @@ if ($ch -eq 'y')
 
     if ($fromZip)
     {
-      # Reescríbelo al zip
+      # ReescrÃ­belo al zip
       $writer = New-Object System.IO.StreamWriter($entry.Open())
       $writer.BaseStream.SetLength(0)
       $writer.Write($xpuiContents)
