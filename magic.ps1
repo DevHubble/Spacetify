@@ -33,7 +33,7 @@ function Get-File
 
   if ($useBitTransfer)
   {
-    Write-Information -MessageData 'Usar un método BitTransfer de reserva ya que está ejecutando Windows PowerShell'
+    Write-Information -MessageData 'Usar método BitTransfer de reserva ya que está ejecutando Windows PowerShell'
     Start-BitsTransfer -Source $Uri -Destination "$($TargetFile.FullName)"
   }
   else
@@ -97,7 +97,7 @@ if (Get-AppxPackage -Name SpotifyAB.SpotifyMusic)
 {
   Write-Host "Se ha detectado la versión de Microsoft Store de Spotify que no es compatible.`n"
 
-  $ch = Read-Host -Prompt 'Desinstalar la edición de la Tienda Windows de Spotify (Y/N)'
+  $ch = Read-Host -Prompt 'Desinstalar la edición de la Tienda Windows de Spotify (Y/N)`n'
   if ($ch -eq 'y')
   {
     Write-Host "Desinstalando Spotify.`n"
@@ -105,7 +105,7 @@ if (Get-AppxPackage -Name SpotifyAB.SpotifyMusic)
   }
   else
   {
-    Read-Host "Finalizando...`nPresione cualquier tecla para salir..."
+    Read-Host "Finalizando...`nPresione cualquier tecla para salir...`n"
     exit
   }
 }
@@ -114,14 +114,14 @@ Push-Location -LiteralPath $env:TEMP
 try
 {
   # Nombre de directorio único basado en el tiempo
-  New-Item -Type Directory -Name "Spotify Friendly-$(Get-Date -UFormat '%Y-%m-%d_%H-%M-%S')" |
+  New-Item -Type Directory -Name "Spotify Friendly-$(Get-Date -UFormat '%Y-%m-%d_%H-%M-%S')`n" |
   Convert-Path |
   Set-Location
 }
 catch
 {
   Write-Output $_
-  Read-Host 'Presione cualquier tecla para salir...'
+  Read-Host 'Presione cualquier tecla para salir...`n'
   exit
 }
 
@@ -145,23 +145,23 @@ $spotifyInstalled = Test-Path -LiteralPath $spotifyExecutable
 $update = $false
 if ($spotifyInstalled)
 {
-  $ch = Read-Host -Prompt 'Opcional: Actualizar Spotify a la última versión. (Es posible que ya esté actualizado). (Y/N)'
+  $ch = Read-Host -Prompt 'Opcional: Actualizar Spotify a la última versión. (Es posible que ya esté actualizado). (Y/N)`n'
   if ($ch -eq 'y')
   {
     $update = $true
   }
   else
   {
-    Write-Host 'No intenta actualizar Spotify.'
+    Write-Host 'No intenta actualizar Spotify.`n'
   }
 }
 else
 {
-  Write-Host 'No se detectó la instalación de Spotify.'
+  Write-Host 'No se detectó la instalación de Spotify.`n'
 }
 if (-not $spotifyInstalled -or $update)
 {
-  Write-Host 'Descargando la última configuración completa de Spotify, espere...'
+  Write-Host 'Descargando la última configuración completa de Spotify, espere...`n'
   $spotifySetupFilePath = Join-Path -Path $PWD -ChildPath 'SpotifyFullSetup.exe'
   try
   {
@@ -171,28 +171,28 @@ if (-not $spotifyInstalled -or $update)
   catch
   {
     Write-Output $_
-    Read-Host 'Presione cualquier tecla para salir...'
+    Read-Host 'Presione cualquier tecla para salir...`n'
     exit
   }
   New-Item -Path $spotifyDirectory -ItemType:Directory -Force | Write-Verbose
 
   [System.Security.Principal.WindowsPrincipal] $principal = [System.Security.Principal.WindowsIdentity]::GetCurrent()
   $isUserAdmin = $principal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)
-  Write-Host 'Instalación en ejecución...'
+  Write-Host 'Instalación en ejecución...`n'
   if ($isUserAdmin)
   {
     Write-Host
-    Write-Host 'Creación de tareas programadas...'
+    Write-Host 'Creación de tareas programadas...`n'
     $apppath = 'powershell.exe'
-    $taskname = 'Spotify install'
+    $taskname = 'Spotify install`n'
     $action = New-ScheduledTaskAction -Execute $apppath -Argument "-NoLogo -NoProfile -Command & `'$spotifySetupFilePath`'"
     $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date)
     $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -WakeToRun
     Register-ScheduledTask -Action $action -Trigger $trigger -TaskName $taskname -Settings $settings -Force | Write-Verbose
-    Write-Host 'La tarea de instalación se ha programado. Inicio de la tarea...'
+    Write-Host 'La tarea de instalación se ha programado. Inicio de la tarea...`n'
     Start-ScheduledTask -TaskName $taskname
     Start-Sleep -Seconds 2
-    Write-Host 'Anular el registro de la tarea...'
+    Write-Host 'Anular el registro de la tarea...`n'
     Unregister-ScheduledTask -TaskName $taskname -Confirm:$false
     Start-Sleep -Seconds 2
   }
@@ -228,7 +228,7 @@ if (-not $spotifyInstalled -or $update)
   }
   
 
-  Write-Host 'Detener Spotify... Otra vez'
+  Write-Host 'Detener Spotify... Otra vez`n'
 
   Stop-Process -Name Spotify
   Stop-Process -Name SpotifyWebHelper
@@ -241,12 +241,12 @@ if ((Test-Path $elfDllBackFilePath) -eq $false)
   Move-Item -LiteralPath "$elfBackFilePath" -Destination "$elfDllBackFilePath" | Write-Verbose
 }
 
-Write-Host 'Parches de Spotify...'
+Write-Host 'Parches de Spotify...`n'
 $patchFiles = (Join-Path -Path $PWD -ChildPath 'chrome_elf.dll'), (Join-Path -Path $PWD -ChildPath 'config.ini')
 
 Copy-Item -LiteralPath $patchFiles -Destination "$spotifyDirectory"
 
-$ch = Read-Host -Prompt 'Opcional: quitar el marcador de posicion del anuncio y el boton de actualizacion. (Y/N)'
+$ch = Read-Host -Prompt 'Recomendado: Quitar anuncios y el boton de actualizacion. (Y/N)`n'
 if ($ch -eq 'y')
 {
   $xpuiBundlePath = Join-Path -Path $spotifyApps -ChildPath 'xpui.spa'
@@ -275,11 +275,11 @@ if ($ch -eq 'y')
     Copy-Item -LiteralPath $xpuiUnpackedPath -Destination "$xpuiUnpackedPath.bak"
     $xpuiContents = Get-Content -LiteralPath $xpuiUnpackedPath -Raw
 
-    Write-Host 'Spicetify detectado- Es posible que deba reinstalar BTS después de ejecutar "spicetify apply"';
+    Write-Host 'Spicetify detectado- Es posible que deba reinstalar BTS después de ejecutar "spicetify apply"`n';
   }
   else
   {
-    Write-Host 'No se pudo encontrar xpui.js, abra un problema en el repositorio de Spotify Friendly.'
+    Write-Host 'No se pudo encontrar xpui.js, abra un problema en el repositorio de Spotify Friendly.`n'
   }
 
   if ($xpuiContents)
@@ -309,7 +309,7 @@ if ($ch -eq 'y')
 }
 else
 {
-  Write-Host "No quita el marcador de posicion del anuncio ni el boton actualizar :(.`n"
+  Write-Host "No elimino anuncios ni el boton actualizar :(.`n"
 }
 
 $tempDirectory = $PWD
@@ -317,16 +317,15 @@ Pop-Location
 
 Remove-Item -LiteralPath $tempDirectory -Recurse
 
-Write-Host 'Parches completos, iniciando Spotify...'
+Write-Host 'Parches completos, iniciando Spotify...`n'
 
 Start-Process -WorkingDirectory $spotifyDirectory -FilePath $spotifyExecutable
 Write-Host 'Hecho :)'
 
 Write-Host @'
-*****************
-@jokersilencioso:
-#NoAds  #Free
-*****************
+********************
+* @jokersilencioso *
+********************
 '@
 
 exit
