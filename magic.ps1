@@ -129,7 +129,7 @@ Write-Host "Descargando el último parche (chrome_elf.zip)...`n"
 $elfPath = Join-Path -Path $PWD -ChildPath 'chrome_elf.zip'
 try
 {
-  $uri = 'https://github.com/devhubble/friendly-spotify/releases/2022/download/chrome_elf.zip'
+  $uri = 'https://github.com/DevHubble/friendly-spotify/releases/download/2022/chrome_elf.zip'     
   Get-File -Uri $uri -TargetFile "$elfPath"
 }
 catch
