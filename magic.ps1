@@ -95,17 +95,17 @@ if ($PSVersionTable.PSVersion.Major -ge 7)
 
 if (Get-AppxPackage -Name SpotifyAB.SpotifyMusic)
 {
-  Write-Host "Se ha detectado la versión de Microsoft Store de Spotify que no es compatible.`n"
+  Write-Host "Se ha detectado la versión de Microsoft Store de Spotify que no es compatible."
 
-  $ch = Read-Host -Prompt 'Desinstalar la edición de la Tienda Windows de Spotify (Y/N)`n'
+  $ch = Read-Host -Prompt 'Desinstalar la edición de la Tienda Windows de Spotify (Y/N)'
   if ($ch -eq 'y')
   {
-    Write-Host "Desinstalando Spotify.`n"
+    Write-Host "Desinstalando Spotify."
     Get-AppxPackage -Name SpotifyAB.SpotifyMusic | Remove-AppxPackage
   }
   else
   {
-    Read-Host "Finalizando...`nPresione cualquier tecla para salir...`n"
+    Read-Host "Finalizando...`nPresione cualquier tecla para salir..."
     exit
   }
 }
@@ -125,7 +125,7 @@ catch
   exit
 }
 
-Write-Host "Descargando el ultimo parche (chrome_elf.zip)...`n"
+Write-Host "Descargando el ultimo parche (chrome_elf.zip)..."
 $elfPath = Join-Path -Path $PWD -ChildPath 'chrome_elf.zip'
 try
 {
@@ -171,28 +171,28 @@ if (-not $spotifyInstalled -or $update)
   catch
   {
     Write-Output $_
-    Read-Host 'Presione cualquier tecla para salir...`n'
+    Read-Host 'Presione cualquier tecla para salir...'
     exit
   }
   New-Item -Path $spotifyDirectory -ItemType:Directory -Force | Write-Verbose
 
   [System.Security.Principal.WindowsPrincipal] $principal = [System.Security.Principal.WindowsIdentity]::GetCurrent()
   $isUserAdmin = $principal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)
-  Write-Host 'Instalación en ejecución...`n'
+  Write-Host 'Instalación en ejecución...'
   if ($isUserAdmin)
   {
     Write-Host
-    Write-Host 'Creación de tareas programadas...`n'
+    Write-Host 'Creación de tareas programadas...'
     $apppath = 'powershell.exe'
-    $taskname = 'Spotify install`n'
+    $taskname = 'Spotify install'
     $action = New-ScheduledTaskAction -Execute $apppath -Argument "-NoLogo -NoProfile -Command & `'$spotifySetupFilePath`'"
     $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date)
     $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -WakeToRun
     Register-ScheduledTask -Action $action -Trigger $trigger -TaskName $taskname -Settings $settings -Force | Write-Verbose
-    Write-Host 'La tarea de instalación se ha programado. Inicio de la tarea...`n'
+    Write-Host 'La tarea de instalación se ha programado. Inicio de la tarea...'
     Start-ScheduledTask -TaskName $taskname
     Start-Sleep -Seconds 2
-    Write-Host 'Anular el registro de la tarea...`n'
+    Write-Host 'Anular el registro de la tarea...'
     Unregister-ScheduledTask -TaskName $taskname -Confirm:$false
     Start-Sleep -Seconds 2
   }
@@ -228,7 +228,7 @@ if (-not $spotifyInstalled -or $update)
   }
   
 
-  Write-Host 'Detener Spotify... Otra vez`n'
+  Write-Host 'Detener Spotify... Otra vez'
 
   Stop-Process -Name Spotify
   Stop-Process -Name SpotifyWebHelper
