@@ -114,7 +114,7 @@ Push-Location -LiteralPath $env:TEMP
 try
 {
   # Nombre de directorio único basado en el tiempo
-  New-Item -Type Directory -Name "Spotify Friendly-$(Get-Date -UFormat '%Y-%m-%d_%H-%M-%S')" |
+  New-Item -Type Directory -Name "SpotifyFriendly-$(Get-Date -UFormat '%Y-%m-%d_%H-%M-%S')" |
   Convert-Path |
   Set-Location
 }
