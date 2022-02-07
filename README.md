@@ -1,4 +1,5 @@
 <center>
+    ![stronghold logo](img/stronghold-logo-left.png)
     <h1 align="center">Spotify Friendly</h1>
     <h4 align="center">Un bloqueador de anuncios multipropósito y skip-bypass para la aplicación de escritorio de Windows Spotify.</h4>
 </center>
