@@ -3,15 +3,10 @@
     <h4 align="center">Un bloqueador de anuncios multipropósito y skip-bypass para la aplicación de escritorio de Windows Spotify.</h4>
 </center>
 
-### Comprobaciones importantes antes de la instalación:
-0. Actualiza Windows, actualiza Spotify y actualiza `Spotify Friendly`
-1. Vaya a "Seguridad de Windows" -> "Protección contra virus y amenazas"
-2. Haga clic en "Amenazas permitidas" -> "Eliminar todas las amenazas permitidas"
-
 ### Funciones:
 * Bloquea todos los anuncios de banner/vídeo/audio dentro de la aplicación
 * Conserva la funcionalidad de amigos, video vertical y radio
-* Desbloquea la función de salto para cualquier pista
+* Desbloquea la función saltar canciones sin límite
 * Ahora es compatible con la nueva versión Alpha (Nueva interfaz de usuario)
 
 :warning: Este mod es para la [**aplicación de escritorio**](https://www.spotify.com/download/windows/) de Spotify solo en Windows y **no la versión de Microsoft Store**.
