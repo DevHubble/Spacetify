@@ -3,6 +3,15 @@
     <h4 align="center">Un bloqueador de anuncios multipropósito y skip-bypass para la aplicación de escritorio de Windows Spotify.</h4>
 </center>
 
+<details>
+<summary>android</summary>
+
+```kotlin
+zoxide import --from z path/to/db
+```
+
+</details>
+
 ### Funciones:
 * Bloquea todos los anuncios de banner/vídeo/audio dentro de la aplicación
 * Conserva la funcionalidad de amigos, video vertical y radio
