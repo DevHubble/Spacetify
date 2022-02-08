@@ -38,7 +38,8 @@ o
 * Reinstala Spotify 
 
  
-<details>
-<summary>Nota</summary>
-  Si los scripts de instalación/desinstalación automática no funcionan, póngase en contacto con JokerDev https://github.com/devhubble
-</details>
+
+### Notas:
+* Si los scripts de instalación/desinstalación automática no funcionan, póngase en contacto con [JokerDev](https://github.com/devhubble)
+
+* Si quieres personalizar y cambiar el tema visita el repo de --> [Spicetify](https://github.com/khanhas/spicetify-cli)
