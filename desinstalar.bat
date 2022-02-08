@@ -1,7 +1,5 @@
 @echo off
-echo ************************
-echo * Author: @JokerSilent *
-echo ************************
+echo TITLE Desinstalar Spacetify-JokerDev
 echo Removing Patch
 if exist "%APPDATA%\Spotify\chrome_elf_bak.dll" (
     del /s /q "%APPDATA%\Spotify\chrome_elf.dll" > NUL 2>&1
