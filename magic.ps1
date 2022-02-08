@@ -73,10 +73,33 @@ function Get-File
 }
 
 Write-Host @'
-
-*****************
-Author: @JokerSilent
-*****************
+               ____ ___  ____ ____ ____ ___ _ ____ _   _ 
+               [__  |__] |__| |    |___  |  | |___  \_/  
+               ___] |    |  | |___ |___  |  | |      |   
+                                                         
+                          _,.-------.,_
+                      ,;~'             '~;,
+                    ,;                     ;,
+                   ;                         ;
+                  ,' Bypass-JokerDev 01/01/01 ',
+                 ,;                           ;,
+                 ; ;      .           .      ; ;
+                 | ;   ______       ______   ; |
+                 |  `/~"     ~" . "~     "~\'  |
+                 |  ~  ,-~~~^~, | ,~^~~~-,  ~  |
+                  |   |        }:{        |   |
+                  |   l   *   / | \   *   !   |
+                  .~  (__,.--" .^. "--.,__)  ~.
+                  |     ---;' / | \ `;---     |
+                   \__.       \/^\/       .__/
+                    V| \                 / |V
+                     | |T~\___!___!___/~T| |
+                     | |`IIII_I_I_I_IIII'| |
+                     |  \,III I I I III,/  |
+                      \   `~~~~~~~~~~'    /
+                        \   .       .   /     
+                          \.    ^    ./
+                            ^~~~^~~~^
 
 '@
 
@@ -114,7 +137,7 @@ Push-Location -LiteralPath $env:TEMP
 try
 {
   # Nombre de directorio único basado en el tiempo
-  New-Item -Type Directory -Name "SpotifyFriendly-$(Get-Date -UFormat '%Y-%m-%d_%H-%M-%S')" |
+  New-Item -Type Directory -Name "Spacetify-$(Get-Date -UFormat '%Y-%m-%d_%H-%M-%S')" |
   Convert-Path |
   Set-Location
 }
@@ -129,7 +152,7 @@ Write-Host "Descargando el ultimo parche (chrome_elf.zip)..."
 $elfPath = Join-Path -Path $PWD -ChildPath 'chrome_elf.zip'
 try
 {
-  $uri = 'https://github.com/DevHubble/friendly-spotify/releases/download/2022/chrome_elf.zip'     
+  $uri = 'https://github.com/DevHubble/Spacetify/releases/download/2022/chrome_elf.zip'     
   Get-File -Uri $uri -TargetFile "$elfPath"
 }
 catch
@@ -323,9 +346,34 @@ Start-Process -WorkingDirectory $spotifyDirectory -FilePath $spotifyExecutable
 Write-Host 'Hecho :)'
 
 Write-Host @'
-********************
-* @jokersilencioso *
-********************
+               ____ ___  ____ ____ ____ ___ _ ____ _   _ 
+               [__  |__] |__| |    |___  |  | |___  \_/  
+               ___] |    |  | |___ |___  |  | |      |   
+                                                         
+                          _,.-------.,_
+                      ,;~'             '~;,
+                    ,;                     ;,
+                   ;                         ;
+                  ,' Bypass-JokerDev 01/01/01 ',
+                 ,;                           ;,
+                 ; ;      .           .      ; ;
+                 | ;   ______       ______   ; |
+                 |  `/~"     ~" . "~     "~\'  |
+                 |  ~  ,-~~~^~, | ,~^~~~-,  ~  |
+                  |   |        }:{        |   |
+                  |   l   *   / | \   *   !   |
+                  .~  (__,.--" .^. "--.,__)  ~.
+                  |     ---;' / | \ `;---     |
+                   \__.       \/^\/       .__/
+                    V| \                 / |V
+                     | |T~\___!___!___/~T| |
+                     | |`IIII_I_I_I_IIII'| |
+                     |  \,III I I I III,/  |
+                      \   `~~~~~~~~~~'    /
+                        \   .       .   /     
+                          \.    ^    ./
+                            ^~~~^~~~^
+
 '@
 
 exit
