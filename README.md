@@ -23,6 +23,9 @@ o
 ```ps1
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/devhubble/friendly-spotify/master/magic.ps1' | Invoke-Expression
 ```
+<center>
+    <h2 align="center"><a href="https://github.com/DevHubble"><img src="https://github.com/DevHubble/Spacetify/blob/main/img/powershell_YjdOO7v6Nd.png" width="600px"></a></h2>
+</center>
 
 o
 
