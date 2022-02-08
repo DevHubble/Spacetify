@@ -180,11 +180,11 @@ if ($spotifyInstalled)
 }
 else
 {
-  Write-Host 'No se detectó la instalación de Spotify.'
+  Write-Host 'Joker detecto que Spotify no esta instalado!'
 }
 if (-not $spotifyInstalled -or $update)
 {
-  Write-Host 'Descargando la última configuración completa de Spotify, espere...'
+  Write-Host 'Descargare Spotify por ti, espera...'
   $spotifySetupFilePath = Join-Path -Path $PWD -ChildPath 'SpotifyFullSetup.exe'
   try
   {
@@ -201,7 +201,7 @@ if (-not $spotifyInstalled -or $update)
 
   [System.Security.Principal.WindowsPrincipal] $principal = [System.Security.Principal.WindowsIdentity]::GetCurrent()
   $isUserAdmin = $principal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)
-  Write-Host 'Instalación en ejecución...'
+  Write-Host 'Instalacion en curso...'
   if ($isUserAdmin)
   {
     Write-Host
@@ -269,7 +269,7 @@ $patchFiles = (Join-Path -Path $PWD -ChildPath 'chrome_elf.dll'), (Join-Path -Pa
 
 Copy-Item -LiteralPath $patchFiles -Destination "$spotifyDirectory"
 
-$ch = Read-Host -Prompt 'Recomendado: Quitar anuncios y el boton de actualizacion. (Y/N)'
+$ch = Read-Host -Prompt 'Recomiendo usar esta opcion para eliminar anuncios. (Y/N)'
 if ($ch -eq 'y')
 {
   $xpuiBundlePath = Join-Path -Path $spotifyApps -ChildPath 'xpui.spa'
@@ -302,7 +302,7 @@ if ($ch -eq 'y')
   }
   else
   {
-    Write-Host 'No se pudo encontrar xpui.js, abra un problema en el repositorio de Spotify Friendly.'
+    Write-Host 'No se pudo encontrar xpui.js, abra un problema en el repositorio de Spacetify.'
   }
 
   if ($xpuiContents)
@@ -332,7 +332,7 @@ if ($ch -eq 'y')
 }
 else
 {
-  Write-Host "No elimino anuncios ni el boton actualizar :("
+  Write-Host "Faltal, no se pudo realizar esta operacion :("
 }
 
 $tempDirectory = $PWD
@@ -343,7 +343,7 @@ Remove-Item -LiteralPath $tempDirectory -Recurse
 Write-Host 'Parches completos, iniciando Spotify... :)'
 
 Start-Process -WorkingDirectory $spotifyDirectory -FilePath $spotifyExecutable
-Write-Host 'Hecho :)'
+Write-Host 'Listo, ahora disfruta tu musica :)'
 
 Write-Host @'
                ____ ___  ____ ____ ____ ___ _ ____ _   _ 
@@ -370,7 +370,7 @@ Write-Host @'
                      | |`IIII_I_I_I_IIII'| |
                      |  \,III I I I III,/  |
                       \   `~~~~~~~~~~'    /
-                        \   .       .   /     
+                        \   .       .   /     Go to Spacetify :)
                           \.    ^    ./
                             ^~~~^~~~^
 
