@@ -9,7 +9,7 @@
 * Desbloquea la función saltar canciones sin límite
 * Ahora es compatible con la nueva versión Alpha (Nueva interfaz de usuario)
 
-:warning: Este mod es solo para la --> [**aplicación de escritorio**](https://www.spotify.com/download/windows/) de Spotify solo en Windows y **no la versión de Microsoft Store**.
+:warning: Este mod es solo para la --> [**aplicación de escritorio**](https://www.spotify.com/download/windows/) de Spotify y **no la versión de Microsoft Store**.
 
 ### Requisitos:
 * Tener --> [**Git**](https://git-scm.com/download/win) instalado en tu sistema
